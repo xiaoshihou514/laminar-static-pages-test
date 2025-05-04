@@ -9,9 +9,9 @@
     "viteWithHost": "vite --host 0.0.0.0",
     "build": "npm run buildScalajsRelease && vite build",
     "preview": "vite preview",
-    "watchScalajs": "scala-cli --power package . -w -f -o scalajs-frontend.js --js-module-kind es",
-    "buildScalajs": "scala-cli --power package . -f -o scalajs-frontend.js --js-module-kind es",
-    "buildScalajsRelease": "scala-cli --power package . -f -o scalajs-frontend.js --js-mode release --js-module-kind es"
+    "watchScalajs": "scala-cli --power package . -w -f -o main.js --js-module-kind es",
+    "buildScalajs": "scala-cli --power package . -f -o main.js --js-module-kind es",
+    "buildScalajsRelease": "scala-cli --power package . -f -o main.js --js-mode release --js-module-kind es"
   },
   "devDependencies": {
     "vite": "^6.1.1",

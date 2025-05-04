@@ -1,4 +1,4 @@
 //> using platform scala-js
 //> using jsVersion 1.18.2
-//> using dep org.scala-js::scalajs-dom::2.8.0
-//> using scala 3.6.3
+//> using scala 3.6.4
+//> using dep com.raquo::laminar::17.2.1

@@ -29,3 +29,5 @@ dist-ssr
 .bloop
 .bsp
 scalajs-frontend.js
+
+/main.js
