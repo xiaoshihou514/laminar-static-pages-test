@@ -1,0 +1,39 @@
+#! /usr/bin/env scala
+
+//> using platform jvm
+//> using scala 3.6.4
+//> using dep org.typelevel::laika-core::1.3.2
+//> using dep org.typelevel::laika-io::1.3.2
+//> using dep org.typelevel::cats-effect::3.6.1
+
+import laika.api.*
+import laika.format.*
+import laika.io.syntax.*
+
+import cats.effect.{Async, Resource}
+import laika.io.api.TreeTransformer
+
+def createTransformer[F[_]: Async]: Resource[F, TreeTransformer[F]] =
+  Transformer
+    .from(Markdown)
+    .to(HTML)
+    .using(Markdown.GitHubFlavor)
+    .parallel[F]
+    .build
+
+import cats.effect.{IO, IOApp, ExitCode}
+
+object MyApp extends IOApp {
+
+  def run(args: List[String]) = {
+    createTransformer[IO]
+      .use { transformer =>
+        // create modules depending on transformer
+        transformer
+          .fromDirectory("content")
+          .toDirectory("public")
+          .transform
+      }
+      .as(ExitCode.Success)
+  }
+}

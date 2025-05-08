@@ -31,3 +31,4 @@ dist-ssr
 scalajs-frontend.js
 
 /main.js
+/public
